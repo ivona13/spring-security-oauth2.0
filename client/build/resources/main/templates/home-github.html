@@ -1,0 +1,7 @@
+<p> Username: <span th:text="${username}"></span></p>
+<p> Repos:</p>
+<ul>
+    <li th:each="repo : ${repos}">
+        <span th:text="${repo.name}"></span>
+    </li>
+</ul>

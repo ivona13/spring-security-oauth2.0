@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: spring-security-oauth-client
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: Ov23liJTwsM20PDtmEk2         # Replace with your GitHub Client ID
+            client-secret: 9bd8061e829258ca26cd405d8713ad7d90a1daa6 # Replace with your GitHub Client Secret
+            scope: read:user, user:email, repo        # Add necessary scopes like 'repo' to access repositories
+
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        security: DEBUG
+
+server:
+  port: 8091
+  address: client.local
+
+resource-server:
+  url: https://api.github.com/user/repos   # Set the resource server URL to GitHub's repository API

@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: spring-security-oauth-client
+  security:
+    oauth2:
+      client:
+        registration:
+          oidc-client:
+            client-id: oidc-client
+            client-secret: secret
+            scope: openid, profile
+            authorization-grant-type: authorization_code
+            redirect-uri: http://client.local:8091/login/oauth2/code/oidc-client
+            provider: my-auth-server
+        provider:
+          my-auth-server:
+            issuer-uri: http://localhost:8090
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        security: DEBUG
+
+server:
+  port: 8091
+  address: client.local
+
+resource-server:
+    url: http://localhost:8092
