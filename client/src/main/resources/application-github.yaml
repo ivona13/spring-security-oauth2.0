@@ -6,9 +6,9 @@ spring:
       client:
         registration:
           github:
-            client-id: Ov23liJTwsM20PDtmEk2         # Replace with your GitHub Client ID
-            client-secret: 9bd8061e829258ca26cd405d8713ad7d90a1daa6 # Replace with your GitHub Client Secret
-            scope: read:user, user:email, repo        # Add necessary scopes like 'repo' to access repositories
+            client-id: Ov23liJTwsM20PDtmEk2
+            client-secret: 9bd8061e829258ca26cd405d8713ad7d90a1daa6
+            scope: read:user, user:email, repo
 
 logging:
   level:
