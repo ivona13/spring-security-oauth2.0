@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
@@ -39,13 +39,13 @@ public class HomeController {
     @GetMapping("/home")
     public String home(Model model,
                        @AuthenticationPrincipal OidcUser oidcUser,
-                       OAuth2AuthenticationToken authentication) {
+                       @RegisteredOAuth2AuthorizedClient("oidc-client") OAuth2AuthorizedClient authorizedClient) {
 
-        // Get the authorized client (OAuth2AuthorizedClient contains the access token)
-        OAuth2AuthorizedClient authorizedClient = authorizedClientService.loadAuthorizedClient(
-                authentication.getAuthorizedClientRegistrationId(),
-                authentication.getName()
-        );
+//         Get the authorized client (OAuth2AuthorizedClient contains the access token)
+//        OAuth2AuthorizedClient authorizedClient = authorizedClientService.loadAuthorizedClient(
+//                authentication.getAuthorizedClientRegistrationId(),
+//                authentication.getName()
+//        );
 
         OAuth2AccessToken accessToken = authorizedClient.getAccessToken();
         String accessTokenValue = accessToken.getTokenValue();

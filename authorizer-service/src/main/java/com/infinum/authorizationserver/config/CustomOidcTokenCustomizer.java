@@ -25,10 +25,10 @@ public class CustomOidcTokenCustomizer {
             if (OidcParameterNames.ID_TOKEN.equals(context.getTokenType().getValue())) {
                 String username = context.getPrincipal().getName();
 
-                AppUser appUser = (AppUser) this.userDetailsService.loadUserByUsername(username);
+                CustomUserDetails customUserDetails = (CustomUserDetails) this.userDetailsService.loadUserByUsername(username);
                 Map<String, Object> customClaims = new HashMap<>();
-                customClaims.put("email", appUser.getEmail());
-                customClaims.put("gender", appUser.getGender());
+                customClaims.put("email", customUserDetails.getEmail());
+                customClaims.put("gender", customUserDetails.getGender());
 
                 context.getClaims().claims(claims -> claims.putAll(customClaims));
             }

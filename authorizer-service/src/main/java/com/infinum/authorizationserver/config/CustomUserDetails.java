@@ -8,29 +8,29 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class AppUser extends User {
+public class CustomUserDetails extends User {
 
     private String email;
 
     private String gender;
 
-    public AppUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    public CustomUserDetails(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
     }
 
-    public AppUser(String username, String password, Collection<? extends GrantedAuthority> authorities, String email, String gender) {
+    public CustomUserDetails(String username, String password, Collection<? extends GrantedAuthority> authorities, String email, String gender) {
         this(username, password, authorities);
         this.email = email;
         this.gender = gender;
     }
 
 
-    public AppUser withEmail(String email) {
+    public CustomUserDetails withEmail(String email) {
         this.email = email;
         return this;
     }
 
-    public AppUser withGender(String gender) {
+    public CustomUserDetails withGender(String gender) {
         this.gender = gender;
         return this;
     }
