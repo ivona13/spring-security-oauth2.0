@@ -35,7 +35,7 @@ import java.util.UUID;
 
 @Configuration
 @EnableWebSecurity
-public class SpringSecurityConfig {
+public class SecurityConfig {
 
     @Bean
     @Order(1)
@@ -80,8 +80,12 @@ public class SpringSecurityConfig {
                 .redirectUri("http://client.local:8091/login/oauth2/code/oidc-client")
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
+                .scope(OidcScopes.EMAIL)
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-                .tokenSettings(TokenSettings.builder().accessTokenTimeToLive(Duration.ofSeconds(30)).refreshTokenTimeToLive(Duration.ofMinutes(1)).build())
+                .tokenSettings(TokenSettings.builder()
+                        .accessTokenTimeToLive(Duration.ofMinutes(1))
+                        .refreshTokenTimeToLive(Duration.ofMinutes(60))
+                        .build())
                 .build();
         return new InMemoryRegisteredClientRepository(registeredClient);
     }
