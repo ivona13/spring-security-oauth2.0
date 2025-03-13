@@ -53,6 +53,10 @@ public class HomeController {
                 authentication.getName()
         );
 
+        if (authorizedClient == null) {
+            return "redirect:/login";
+        }
+
         OAuth2AccessToken accessToken = authorizedClient.getAccessToken();
         String accessTokenValue = accessToken.getTokenValue();
 
@@ -93,7 +97,7 @@ public class HomeController {
     private String callAuthorizationServer(String accessToken) {
         String url = resourceServerUrl + "/greetings";
 
-        log.info("➡ Calling Resource Server at: %s".formatted(url));
+        log.info("Calling Resource Server at: %s".formatted(url));
 
         try {
             HttpHeaders headers = new HttpHeaders();

@@ -80,7 +80,6 @@ public class SecurityConfig {
                 .redirectUri("http://client.local:8091/login/oauth2/code/oidc-client")
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
-                .scope(OidcScopes.EMAIL)
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
                 .tokenSettings(TokenSettings.builder()
                         .accessTokenTimeToLive(Duration.ofMinutes(1))
